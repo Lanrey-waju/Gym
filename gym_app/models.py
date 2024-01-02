@@ -1,9 +1,11 @@
 from django.db import models
 from django.utils import timezone
 
-from users.models import CustomUser
+from django.contrib.auth import get_user_model
 
 # Create your models here.
+
+CustomUser = get_user_model()
 
 
 class Gymmer(models.Model):
@@ -22,3 +24,7 @@ class Gymmer(models.Model):
     gymmer = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     subscription_is_active = models.BooleanField(default=False, null=False)
     started = models.DateTimeField(auto_now_add=True, default=timezone.now)
+
+
+class Plans(models.Model):
+    pass
